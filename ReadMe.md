@@ -12,28 +12,28 @@ a base unit. Assume that x[n] denotes the samples of the true value of temperatu
 However, it is found that the received signal y[n] at the base unit suffers from blur distortions and noise
 (additive). Hence, the signal y[n] needs to be first processed so that we can recover x[n] from it. Assume
 that blur happens via a system characterized an impulse response
- h[n] = 1/16 [1 4 6 4 1]
+h[n] = 1/16 [1 4 6 4 1]
 (assume that the center value of 6/16 corresponds to n = 0) Then, implement the following two approaches to
 
 recover the original signal x[n] from distorted signal y[n].
+
 1. First remove noise and then sharpen (deblur). Let the resulting signal be x1[n].
-1. First sharpen (deblur) and then remove noise. Let the resulting signal be x2[n].
+2. First sharpen (deblur) and then remove noise. Let the resulting signal be x2[n].
 
 Now, compare x1[n] and x2[n] with x[n]. What conclusions can you draw from your observations? Also,
 explain your observations from a theoretical perspective if possible.
-
 
 ## **Contents**
 
 The folder will have the following components:
 
-### x1[n]
+### Denoise then Deblur
 
 This contains the MatLab codes for the output signal x1[n] which is formed by de-noising then sharpening the given distorted signal.
 
-### x2[n]
-This contains the MatLab codes for the output signal x2[n] which is formed by de-blurring then removing noise from the given distorted signal.
+### Deblur then Denoise
 
+This contains the MatLab codes for the output signal x2[n] which is formed by de-blurring then removing noise from the given distorted signal.
 
 ### Report
 
@@ -60,24 +60,29 @@ Follow the follwing sequence and run each part of the code in order
 
 1. de_noise.m
 
-        main denoise function
+   ```
+    main denoise function
+   ```
+2. Hjw.m
 
-1. Hjw.m
+   ```
+    sampling and fourier of h
+   ```
+3. fourier_dt.m
 
-        sampling and fourier of h
+   ```
+    calculation of fourier transform of denoised signal
+   ```
+4. de_blur.m
 
-1. fourier_dt.m
+   ```
+    division of the obtained fouriers
+   ```
+5. inverse_dt.m
 
-        calculation of fourier transform of denoised signal
-
-
-1. de_blur.m
-
-        division of the obtained fouriers
-
-1. inverse_dt.m
-
-        taking fourier inverse and retrieving the signal
+   ```
+    taking fourier inverse and retrieving the signal
+   ```
 
 After following the sequence, a graph will be shown at the end of executing the "inverse_dt.m" file which will be the final graph of x1[n].
 
@@ -85,27 +90,31 @@ After following the sequence, a graph will be shown at the end of executing the 
 
 Follow the follwing sequence and run each part of the code in order
 
-1. Hjw.m 
+1. Hjw.m
 
-        sampling and fourier of h
+   ```
+    sampling and fourier of h
+   ```
+2. fourier_dt.m
 
-1. fourier_dt.m
+   ```
+    calculation of fourier transform of denoised signal
+   ```
+3. de_blur.m
 
-        calculation of fourier transform of denoised signal
+   ```
+    division of the obtained fouriers
+   ```
+4. inverse_dt.m
 
+   ```
+    taking fourier inverse to deblur
+   ```
+5. de_noise.m - main denoise function
 
-1. de_blur.m
-
-        division of the obtained fouriers
-
-1. inverse_dt.m
-
-        taking fourier inverse to deblur
-
-1. de_noise.m - main denoise function 
-
-        denoising and retrieving the signal
-
+   ```
+    denoising and retrieving the signal
+   ```
 
 After following the sequence, a graph will be shown at the end of executing the "denoise.m" file which will be the final graph of x2[n].
 
@@ -122,4 +131,3 @@ Haardik Ravat (B20EE021)
 [Mathworks](https://in.mathworks.com/products/matlab.html)
 
 [EEL2010](https://sites.google.com/iitj.ac.in/eel2010/)
-
